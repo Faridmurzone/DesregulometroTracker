@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ItemCard } from "@/components/item-card";
 import { LeaderboardCard } from "@/components/leaderboard-card";
+import { AddItemForm } from "@/components/add-item-form";
 
 export function Home() {
   const { data: items, isLoading } = useQuery({
@@ -24,6 +25,8 @@ export function Home() {
             ¿Qué cosas te desregulan en el trabajo? ¡Vota y descubre qué piensan tus compañeros!
           </p>
         </header>
+
+        <AddItemForm />
 
         <div className="grid md:grid-cols-[1fr_300px] gap-8">
           <div className="space-y-6">

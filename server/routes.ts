@@ -15,7 +15,7 @@ export function registerRoutes(app: Express): Server {
         });
         const total = allVotes.length;
         const desregula = allVotes.filter(v => v.desregula).length;
-        
+
         return {
           ...item,
           stats: {
@@ -28,6 +28,20 @@ export function registerRoutes(app: Express): Server {
       })
     );
     res.json(itemsWithStats);
+  });
+
+  // Add new item
+  app.post("/api/items", async (req, res) => {
+    const { description } = req.body;
+    if (!description || typeof description !== 'string' || description.trim().length === 0) {
+      return res.status(400).json({ message: "Description is required" });
+    }
+
+    const newItem = await db.insert(items)
+      .values({ description: description.trim() })
+      .returning();
+
+    res.json({ ...newItem[0], stats: { total: 0, desregula: 0, noDesregula: 0, percentage: 0 } });
   });
 
   // Add vote
@@ -50,7 +64,7 @@ export function registerRoutes(app: Express): Server {
         "Las laptops abiertas sin desbloquear",
         "Un ringtone de un teléfono"
       ];
-      
+
       await db.insert(items).values(
         defaultItems.map(description => ({ description }))
       );
