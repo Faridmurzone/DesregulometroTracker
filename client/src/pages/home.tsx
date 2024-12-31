@@ -20,7 +20,7 @@ export function Home() {
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <header className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-primary">Desregulómetro</h1>
+          <h1 className="text-4xl font-bold text-foreground">Desregulómetro</h1>
           <p className="text-muted-foreground">
             ¿Qué cosas te desregulan en el trabajo? ¡Vota y descubre qué piensan tus compañeros!
           </p>

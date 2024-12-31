@@ -64,7 +64,7 @@ export function AddItemForm() {
         <Button 
           type="submit" 
           disabled={!description.trim() || addItemMutation.isPending}
-          className="gap-2"
+          className="gap-2 bg-primary hover:bg-primary/90"
         >
           <Plus className="h-4 w-4" />
           Agregar
